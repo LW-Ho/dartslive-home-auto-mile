@@ -28,7 +28,9 @@ async def main():
         dartslive = Dartslive(email[index], password[index])
         if await dartslive.login() :
             LOGGER.info('Account ID :'+str(dartslive._accountId)+', Player ID:'+str(dartslive._playerId)+', Access Key:'+dartslive._accessKey)
-    
+        await dartslive.playgame()
+        LOGGER.info(dartslive._missionClear)
+
     LOGGER.info('All Done, Sleep 8 Hours...')
     await asyncio.sleep(8*60*60)
 
