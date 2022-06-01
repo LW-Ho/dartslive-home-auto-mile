@@ -1,0 +1,13 @@
+{
+	"app_ver": "1.14.0",
+	"platform_id": 1,
+	"res_count": 637896936147182130,
+	"account_id": 2330,
+	"access_key": "XXXXXXX-XXXX-XXXX-XXXXX-XXXXXXXXXX",
+	"liveMatch": false,
+	"gameId": 1003,
+	"playerInfoList": [{
+		"pid": "992330"
+	}],
+	"vsPlayerInfoList": []
+}

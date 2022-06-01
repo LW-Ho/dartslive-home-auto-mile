@@ -1,0 +1,59 @@
+{
+	"app_ver": "1.14.0",
+	"platform_id": 1,
+	"res_count": 637896937129620650,
+	"account_id": 2330,
+	"access_key": "XXXXXXX-XXXX-XXXX-XXXXX-XXXXXXXXXX",
+	"gameId": 2001,
+	"playerNum": 1,
+	"roundNum": 3,
+	"groupNum": 1,
+	"stats_list": [{
+		"pid": "992330",
+		"is_vs": 0,
+		"is_livematch": 0,
+		"is_win": 0,
+		"score": 7.875,
+		"teamType": 1,
+		"rank": 0,
+		"finishScore": 0,
+		"roundData": [{
+			"hitSegment": ["BB", "B", "T20"],
+			"roundNo": 1,
+			"roundScore": 135
+		}, {
+			"hitSegment": ["T19", "T18", "T17"],
+			"roundNo": 2,
+			"roundScore": 162
+		}, {
+			"hitSegment": ["T16", "T15", "-"],
+			"roundNo": 3,
+			"roundScore": 93
+		}],
+		"award": {
+			"hight_out": false,
+			"ton_80": 0,
+			"high_ton": 0,
+			"low_ton": 0,
+			"three_in_the_black": 0,
+			"hat_trick": 0,
+			"three_in_a_bed": 0,
+			"white_horse": 1,
+			"nine_count": 1,
+			"eight_count": 0,
+			"seven_count": 0,
+			"six_count": 2,
+			"five_count": 0,
+			"double_bull": 1,
+			"single_bull": 1
+		},
+		"no_stats_save": 0
+	}],
+	"gameOption": {
+		"handyCap": false,
+		"outOption": 0,
+		"inOption": 0,
+		"sepalateBull": false,
+		"cutThroat": false
+	}
+}
