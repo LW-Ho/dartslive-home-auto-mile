@@ -1,6 +1,7 @@
 [
     {
         "email": "",
-        "password": ""
+        "password": "",
+        "notify": ""
     }
 ]

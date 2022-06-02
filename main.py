@@ -15,36 +15,42 @@ LOGGER = logging.getLogger('main')
 
 async def main():
     try:
-        email = []
-        password = []
+        userdata = []
         dir_path = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(dir_path, 'user.json')) as json_file:
-            data = json.load(json_file)
-            for item in data:
-                email.append(item['email'])
-                password.append(item['password'])
+            userdata = json.load(json_file)
         
         LOGGER.info('Start DartsLive Home Auto Finish Mission...')
-        for index in range(len(email)):
-            LOGGER.info('Email: '+email[index])
-            dartslive = Dartslive(email[index], password[index])
+        for item in userdata:
+            LOGGER.info('Email: '+str(item['email']))
+            dartslive = Dartslive(item['email'], item['password'])
+            
+            # Login then get mile and finish missions.
             if await dartslive.login() :
                 LOGGER.info('Account ID :'+str(dartslive._accountId)+', Player ID:'+str(dartslive._playerId)+', Access Key:'+dartslive._accessKey)
                 await dartslive.playgame()
                 
             await dartslive.getAccountDetail()
+
+            # Send Email
+            if item['notify'] != '':
+                try:
+                    import gmail
+                    gmail.notify(item['notify'], json.dumps(dartslive._missionClear))
+                except Exception as e:
+                    LOGGER.error(e)
+
             LOGGER.info(dartslive._missionClear)
 
-        hours = randrange(8,12)
     except Exception as e:
         LOGGER.error(e)
     
     except ValueError as e:
         LOGGER.error(e)
 
-    else:
-        LOGGER.info('Sleep '+str(hours)+' Hours...')
-        await asyncio.sleep(hours*60*60)
+    hours = randrange(8,12)
+    LOGGER.info('Sleep '+str(hours)+' Hours...')
+    await asyncio.sleep(hours*60*60)
 
 
 if __name__ == "__main__":
