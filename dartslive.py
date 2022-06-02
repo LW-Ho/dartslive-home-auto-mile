@@ -23,6 +23,7 @@ class Dartslive(object):
         self._response = ''
         self._accessKey = ''
         self._accountId = 0
+        self._playerName = ''
         self._playerId = 0
         self._missionClear = {}
         self._coins = 0
@@ -73,8 +74,10 @@ class Dartslive(object):
                 raise ValueError('It\' done, wait for the next day')
 
             return True
-        except Exception as e:
-            LOGGER.error(e)
+
+        except ValueError as e:
+            LOGGER.warning(e)
+        else:
             return False
     
     async def dlhomeLogin(self):
@@ -104,7 +107,16 @@ class Dartslive(object):
             jsondata['access_key'] = self._accessKey
 
             if await self.post(self._getPlayerURL, jsondata):
-                # get first player
+                # check player list, search Test player.
+                for player in self._response['player']:
+                    if player['name'] == 'Test' or player['name'] == 'test':
+                        self._playerName = player['name']
+                        self._playerId = player['id']
+                        self._missionClear['playerName'] = self._playerName
+                        return
+                
+                # default first one.
+                self._playerName = self._response['player'][0]['name']
                 self._playerId = self._response['player'][0]['id']
             else:
                 LOGGER.error('PlayerId POST Error')

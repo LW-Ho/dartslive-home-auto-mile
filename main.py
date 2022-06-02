@@ -27,7 +27,7 @@ async def main():
             
             # Login then get mile and finish missions.
             if await dartslive.login() :
-                LOGGER.info('Account ID :'+str(dartslive._accountId)+', Player ID:'+str(dartslive._playerId)+', Access Key:'+dartslive._accessKey)
+                LOGGER.info('Account ID :'+str(dartslive._accountId)+', Player Name and ID : '+str(dartslive._playerName)+', '+str(dartslive._playerId)+', Access Key:'+dartslive._accessKey)
                 await dartslive.playgame()
                 
             await dartslive.getAccountDetail()
@@ -43,9 +43,6 @@ async def main():
             LOGGER.info(dartslive._missionClear)
 
     except Exception as e:
-        LOGGER.error(e)
-    
-    except ValueError as e:
         LOGGER.error(e)
 
     hours = randrange(8,12)
