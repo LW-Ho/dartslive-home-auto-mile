@@ -1,0 +1,16 @@
+{
+	"accountNotification": false,
+	"bonus": {
+		"dailyBonusMile": 10,
+		"monthlyBonusCoin": 0
+	},
+	"error": "",
+	"error_code": 0,
+	"infoNum": 0,
+	"loginBanner": {
+		"imageUrl": "",
+		"seqId": 0
+	},
+	"missionNotification": true,
+	"webAccountKind": 1
+}
