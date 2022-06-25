@@ -21,7 +21,5 @@
 (滿分打，會影響到自身紀錄，有需要者可建立另一個PlayerID)\
 自動找尋Test PlayerName，如果找不到就預設第一位Player。\
 通知Email 使用者今日的點數成果\
-\
-當日已拿過點數後則跳過等下一次。
 
 # Coming soon
