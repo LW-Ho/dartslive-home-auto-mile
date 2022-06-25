@@ -154,10 +154,7 @@ class Dartslive(object):
             jsondata['infoLastWatchedAt'] = int((datetime.today() - timedelta(days=1)).timestamp()) # yesterday timestamp
 
             if await self.post(self._healthCheckURL, jsondata):
-                if self._response['error'] == '' and self._response['missionNotification'] == True:
-                    LOGGER.info('Get Daily Mile :'+str(self._response['bonus']['dailyBonusMile']))
-                else:
-                    return False
+                LOGGER.info('Get Daily Mile :'+str(self._response['bonus']['dailyBonusMile']))
             else:
                 LOGGER.error('getDailyMile POST Error')
             
@@ -206,3 +203,7 @@ class Dartslive(object):
         await self.startgame('cricket_start.json', 'cricket_end.json', 'cricket')
         # count-up
         await self.startgame('countup_start.json', 'countup_end.json', 'count-up')
+        # cricket count-up
+        await self.startgame('cricket_countup_start.json', 'cricket_countup_end.json', 'cricket count-up')
+        # shoot out
+        await self.startgame('shoot_out_start.json', 'shoot_out_end.json', 'shoot out')

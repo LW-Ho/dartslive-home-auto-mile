@@ -1,0 +1,79 @@
+{
+	"app_ver": "1.14.0",
+	"platform_id": 1,
+	"res_count": 637917567312259280,
+	"account_id": 2330,
+	"access_key": "XXXXXXX-XXXX-XXXX-XXXXX-XXXXXXXXXX",
+	"gameId": 3002,
+	"playerNum": 1,
+	"roundNum": 8,
+	"groupNum": 1,
+	"stats_list": [{
+		"pid": "992330",
+		"is_vs": 0,
+		"is_livematch": 0,
+		"is_win": 0,
+		"score": 1275.0,
+		"teamType": 1,
+		"rank": 0,
+		"finishScore": 1275,
+		"roundData": [{
+			"hitSegment": ["T20", "T20", "T20"],
+			"roundNo": 1,
+			"roundScore": 180
+		}, {
+			"hitSegment": ["T19", "T19", "T19"],
+			"roundNo": 2,
+			"roundScore": 171
+		}, {
+			"hitSegment": ["T18", "T18", "T18"],
+			"roundNo": 3,
+			"roundScore": 162
+		}, {
+			"hitSegment": ["T17", "T17", "T17"],
+			"roundNo": 4,
+			"roundScore": 153
+		}, {
+			"hitSegment": ["T16", "T16", "T16"],
+			"roundNo": 5,
+			"roundScore": 144
+		}, {
+			"hitSegment": ["T15", "T15", "T15"],
+			"roundNo": 6,
+			"roundScore": 135
+		}, {
+			"hitSegment": ["BB", "BB", "BB"],
+			"roundNo": 7,
+			"roundScore": 150
+		}, {
+			"hitSegment": ["T20", "T20", "T20"],
+			"roundNo": 8,
+			"roundScore": 180
+		}],
+		"award": {
+			"hight_out": false,
+			"ton_80": 2,
+			"high_ton": 0,
+			"low_ton": 0,
+			"three_in_the_black": 1,
+			"hat_trick": 1,
+			"three_in_a_bed": 7,
+			"white_horse": 0,
+			"nine_count": 7,
+			"eight_count": 0,
+			"seven_count": 0,
+			"six_count": 1,
+			"five_count": 0,
+			"double_bull": 3,
+			"single_bull": 0
+		},
+		"no_stats_save": 0
+	}],
+	"gameOption": {
+		"handyCap": false,
+		"outOption": 0,
+		"inOption": 0,
+		"sepalateBull": false,
+		"cutThroat": false
+	}
+}
