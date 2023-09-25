@@ -1,6 +1,7 @@
 import requests
 import asyncio
 from urllib.error import HTTPError
+from bs4 import BeautifulSoup
 
 from datetime import datetime, timedelta
 
@@ -34,6 +35,7 @@ class Dartslive(object):
         self._getAccountMenuURL="https://homeapi.dartslive.com/dlhome/action.jsp?actionid=getAccountMenu"
         self._gameStart="https://homeapi.dartslive.com/dlhome/action.jsp?actionid=gameStart"
         self._gameEnd="https://homeapi.dartslive.com/dlhome/action.jsp?actionid=gameEnd"
+        self._app_version = '1.0.0'
     
     def oepn_jsonfile(self, filename):
         data = {}
@@ -41,10 +43,23 @@ class Dartslive(object):
         with open(os.path.join(dir_path+'/game_template', filename)) as json_file:
             data = json.load(json_file)
 
+        if 'app_ver' in data:
+            data['app_ver'] = self._app_version
+
         return data
 
     def get_timenow(self):
         return int(datetime.timestamp(datetime.now()) * TEMPTIME_RES_COUNT)
+
+    async def getAppVersion(self):
+        url = "https://apps.apple.com/tw/app/dartslive-home/id1498187536"
+        # url = "https://apps.apple.com/tw/app/id1498187536"
+        # response = requests.get(url)
+        response = self._session.get(url)
+        soup = BeautifulSoup(response.text, "html.parser")
+        version_element = soup.find(class_="whats-new__latest__version")
+        version_number = version_element.get_text()
+        self._app_version = version_number.split(' ')[1]
 
     async def post(self, url, data={}):
         try:
@@ -63,10 +78,12 @@ class Dartslive(object):
 
     async def login(self):
         try:
+            await self.getAppVersion()
+
             # Login
             if not await self.dlhomeLogin():
                 return False
- 
+
             await self.getPlayerId()
             await self.getAccountDetail() # Get Account Coins and Miles
             
