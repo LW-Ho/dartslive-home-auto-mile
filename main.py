@@ -36,6 +36,7 @@ async def main():
             if item['notify'] != '':
                 try:
                     import gmail
+                    dartslive._missionClear['app_ver'] = dartslive._app_version
                     gmail.notify(item['notify'], json.dumps(dartslive._missionClear))
                 except Exception as e:
                     LOGGER.error(e)
