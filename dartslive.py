@@ -52,14 +52,25 @@ class Dartslive(object):
         return int(datetime.timestamp(datetime.now()) * TEMPTIME_RES_COUNT)
 
     async def getAppVersion(self):
-        url = "https://apps.apple.com/tw/app/dartslive-home/id1498187536"
-        # url = "https://apps.apple.com/tw/app/id1498187536"
-        # response = requests.get(url)
-        response = self._session.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        version_element = soup.find(class_="whats-new__latest__version")
-        version_number = version_element.get_text()
-        self._app_version = version_number.split(' ')[1]
+        app_id = "1498187536"
+        url = f"https://itunes.apple.com/lookup?id={app_id}&country=tw"
+
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+
+            data = response.json()
+
+            if data.get("resultCount", 0) > 0:
+                app_info = data["results"][0]
+                version_number = app_info.get("version")
+                self._app_version = version_number
+                return version_number
+            else:
+                return "Not found the app information."
+
+        except Exception as e:
+            return f"Connection error: {e}"
 
     async def post(self, url, data={}):
         try:
